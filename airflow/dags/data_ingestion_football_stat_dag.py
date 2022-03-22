@@ -61,24 +61,24 @@ default_args = {
 }
 
 with DAG(
-    dag_id="football_stat_dag",
+    dag_id="new_football_dag",
     schedule_interval="@yearly",
     start_date=datetime(2012, 1, 1),
     end_date=datetime(2021, 1, 1),
     default_args=default_args,
-    tags=['football'],
+    tags=['dtc-de'],
 ) as dag:
 
     download_dataset_task = BashOperator(
         task_id="download_dataset_task",
-        bash_command=f"curl -sS {dataset_url} > {path_to_local_home}/{dataset_file}"
+        bash_command=f"curl -sSLf {dataset_url} > {path_to_local_home}/{first_year}{dataset_file}"
     )
 
     format_to_parquet_task = PythonOperator(
         task_id="format_to_parquet_task",
         python_callable=format_to_parquet,
         op_kwargs={
-            "src_file": f"{path_to_local_home}/{dataset_file}",
+            "src_file": f"{path_to_local_home}/{first_year}{dataset_file}",
         },
     )
 
@@ -87,9 +87,14 @@ with DAG(
         python_callable=upload_to_gcs,
         op_kwargs={
             "bucket": BUCKET,
-            "object_name": f"raw/football/{first_year}{second_year}/{parquet_file}",
-            "local_file": f"{path_to_local_home}/{parquet_file}",
+            "object_name": f"raw/football/{first_year}{parquet_file}",
+            "local_file": f"{path_to_local_home}/{first_year}{parquet_file}",
         },
     )
 
-    download_dataset_task >> format_to_parquet_task >> local_to_gcs_task
+    rm_task = BashOperator(
+        task_id="rm_task",
+        bash_command=f"rm {path_to_local_home}/{first_year}{dataset_file} {path_to_local_home}/{first_year}{parquet_file}"
+    )
+
+    download_dataset_task >> format_to_parquet_task>> local_to_gcs_task >> rm_task
