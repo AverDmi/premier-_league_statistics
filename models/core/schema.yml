@@ -1,0 +1,75 @@
+version: 2
+
+sources:
+    - name: staging
+      database: innate-temple-338718
+      schema: football_data
+
+      tables:
+        - name: premier_league_statistics
+
+models:
+    - name: football_statistics
+      description: Statistics of football match in Premier Legue about last 10 years
+      columns:
+        - name: match_date
+          description: Match Date
+          tests:
+              - not_null:
+                  severity: warn
+        - name: match_time
+          description: Time of match kick off
+        - name: HomeTeam
+          description: Home Team
+        - name: AwayTeam
+          description: Away Team
+        - name: FTHG
+          description: Full Time Home Team Goals
+        - name: FTAG
+          description: Full Time Away Team Goals
+        - name: FTR
+          description: Full Time Result
+        - name: HTHG
+          description: Half Time Home Team Goals
+        - name: HTAG
+          description: Half Time Away Team Goals
+        - name: HTR
+          description: Half Time Result
+        - name: Referee
+          description: Match Referee
+        - name: HS
+          description: Home Team Shots
+        - name: AS
+          description: Away Team Shots
+        - name: HST
+          description: Home Team Shots on Target 
+        - name: AST
+          description: Away Team Shots on Target
+        - name: HHW
+          description: Home Team Hit Woodwork
+        - name: AHW
+          description: Away Team Hit Woodwork
+        - name: HC
+          description: Home Team Corners 
+        - name: AC
+          description: Away Team Corners
+        - name: HF
+          description: Home Team Fouls Committed
+        - name: AF
+          description: Away Team Fouls Committed
+        - name: HFKC
+          description: Home Team Free Kicks Conceded
+        - name: AFKC
+          description: Away Team Free Kicks Conceded
+        - name: HO
+          description: Home Team Offsides
+        - name: AO
+          description: Away Team Offsides
+        - name: HY
+          description: Home Team Yellow Cards
+        - name: AY
+          description: Away Team Yellow Cards
+        - name: HR
+          description: Home Team Red Cards
+        - name: AR
+          description: Away Team Red Cards
