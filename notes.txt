@@ -15,7 +15,6 @@ HTAG = Half Time Away Team Goals
 HTR = Half Time Result (H=Home Win, D=Draw, A=Away Win)
 
 Match Statistics (where available)
-Attendance = Crowd Attendance
 Referee = Match Referee
 HS = Home Team Shots
 AS = Away Team Shots
@@ -35,5 +34,3 @@ HY = Home Team Yellow Cards
 AY = Away Team Yellow Cards
 HR = Home Team Red Cards
 AR = Away Team Red Cards
-HBP = Home Team Bookings Points (10 = yellow, 25 = red)
-ABP = Away Team Bookings Points (10 = yellow, 25 = red)
