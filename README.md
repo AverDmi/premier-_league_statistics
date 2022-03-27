@@ -1,7 +1,7 @@
 # Premier Ligue football statistics
 ___
 
-In this project we use data about football matches that have been played in the last 10 years in the English Premier League. The data was taken from the website [Football-Data.co.uk](https://www.football-data.co.uk/englandm.php).
+This project uses data about football matches that have been played in the last 10 years in the English Premier League. The data was taken from the website [Football-Data.co.uk](https://www.football-data.co.uk/englandm.php).
 Based on these data, a [dashboard](https://datastudio.google.com/reporting/066249a1-e80a-4702-af10-3beac3f14c2d) was built that helps us answer several questions:
 * Which 5 teams most often pleased their fans and scored the most goals playing at their home stadium
 * Match outcome ratio
@@ -93,8 +93,8 @@ ___
 Note: This step could be skipped by using a managed repository if you don't have your own GitHub repo for the course.
 1. Select git clone and paste the SSH key from your repo.
 2. You will get a deploy key, head to your GH repo and go to the settings tab. Under security you'll find the menu deploy keys. Click on add key and paste the deploy key provided by dbt cloud. Make sure to tikce on "write access"
-#### Tranform data and create a table
-1. You shoul copy code from [this folder](https://github.com/AverDmi/premier_league_statistics/tree/master/dbt)
+#### Transform data and create a table
+1. You should copy code from [this folder](https://github.com/AverDmi/premier_league_statistics/tree/master/dbt)
 2. Run command
 ```
 dbt build
